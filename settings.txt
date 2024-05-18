@@ -1,0 +1,18 @@
+{"site_url":"http://testsoul.com",
+"site_title": "Sergey Ekker: Game designer and python developer",
+"description": "Sergey Ekker - portfolio, resume and some more",
+"keywords": "Python, Game design",
+"name": "Sergei Ekker",
+"tag1":"Game designer",
+"tag2":"and python developer",
+"sect1":"Главная",
+"sect2":"Резюме",
+"sect3":"Портфолио",
+"sect4":"Блог",
+"sect5":"Контакты",
+"telegram":"https://t.me/TerTro",
+"vk":"https://vk.com/testersoulja",
+"email":"mailto:testersoulja@gmail.com",
+"github":"https://github.com/TestSoulja",
+"city":"Moscow"
+}
