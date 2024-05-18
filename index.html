@@ -1,49 +1,20 @@
 ---
 layout: default
-title: Michael Levin | Kinnetica
-description: Kinnetica is the home of Michael Levin, a web and software developer living in the Washington, D.C. area.
-keywords: michael levin,blog,html,css,javascript,ruby,rails,programming,web,development
-change_frequency: daily
-priority: 1.0
 ---
-<div id="post-wrapper">
-  {% for post in paginator.posts %}
-    {% if post.link_url %}
-      <div class="post">
-        <h2 class="external"><a href="{{ post.link_url }}">{{ post.title }}</a></h2>
-        <p class="date-sub-head"><a href="/about">Michael Levin</a> | {{ post.date | date: "%A, %B %d, %Y" }} | <a href="{{ post.url }}">Permalink</a></p>
-        {{ post.content }}
-      </div>
-    {% else %}
-      <div class="post">
-        <h2 class="internal"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <p class="date-sub-head"><a href="/about">Michael Levin</a> | {{ post.date | date: "%A, %B %d, %Y" }}</p>
-        {{ post.content }}
-      </div>
-    {% endif %}
-  {% endfor %}
 
-  <div class="pagination">
-    {% if paginator.next_page %}
-      <a href="/page{{paginator.next_page}}" class="next ">&laquo; Older Entries</a>
-    {% endif %}
-  
-    {% if paginator.previous_page %}
-      <div style="float:right;">
-    {% endif %}
-  
-    {% if paginator.previous_page %}
-      <a href="
-        {% if paginator.previous_page == 1 %}
-          /
-        {% else %}
-          /page{{ paginator.previous_page }}
-        {% endif %}">Newer Entries &raquo;</a>
-    {% endif %}
-  
-    {% if paginator.previous_page %}
-      </div>
-      <div style="clear:both;"></div>
-    {% endif %}
-  </div>
+
+<!-- Main -->
+<div id="main">
+    <section>
+        <div id="carlosedp-rss-embed" 
+        data-rss="https://medium.com/feed/@carlosedp"
+        data-maxcols="3" 
+        data-layout="grid" 
+        data-poststyle="inline" 
+        data-readmore="Read the rest" 
+        data-buttonclass="btn btn-primary" 
+        data-offset="-100"></div>
+    </section>
+    <hr>
+    For older posts, check the <a href="{{site.base_dir}}/archives">archives &raquo;</a>
 </div>

@@ -1,11 +1,57 @@
 ---
 layout: default
 ---
-<div class="single-post">
-  <h2 class="internal" style="display:inline;">{{ page.title }}</h2>
-  <span class="plus-one"><g:plusone size="medium" count="false"></g:plusone></span>
-  <p class="date-sub-head"><a href="/about">Michael Levin</a> | {{ page.date | date: "%A, %B %d, %Y" }}</p>
-  <p>{{ content }}</p>
-</div>
+<div id="main">
+    <article>
+        <header class="major">
+            <h2 class="post-title">{{ page.title }}</h2>
+                <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+        </header>
 
-<p class="post-footer">Have a comment? Send me an <a href="mailto:&#109;&#105;&#099;&#104;&#097;&#101;&#108;&#064;&#107;&#105;&#110;&#110;&#101;&#116;&#105;&#099;&#097;&#046;&#099;&#111;&#109;">email</a> or a tweet <a href="http://www.twitter.com/kinnetica" onclick="javascript: _gaq.push(['_trackPageview', '/G4/twitter.com']);">@kinnetica</a>.</p>
+        <section>
+            {{ content }}
+        </section>
+        <hr>
+        <footer>
+            <div class="row">
+            {% if page.previous %}
+
+                <article class="{% cycle '6u', '6u$' %} 12u(small) excerpt">
+                    <header>
+                        <h2><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h2>
+                    </header>
+                    <section>
+                        {{ page.previous.excerpt }}
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="{{ page.previous.url }}" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+            {% endif %}
+
+            {% if page.next %}
+
+                <article class="{% cycle '6u', '6u$' %} 12u(small) excerpt f-right">
+                    <header>
+                        <h2><a href="{{ page.next.url }}">{{ page.next.title }}</a></h2>
+                    </header>
+                    <section>
+                        {{ page.next.excerpt | markdownify }}
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="{{ page.next.url }}" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+            {% endif %}
+            </div>
+        </footer>
+        <hr>
+        For more posts, check the <a href="{{site.base_dir}}/archives">archives &raquo;</a>
+
+    </article>
+
+</div>

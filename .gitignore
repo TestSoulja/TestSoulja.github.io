@@ -1,5 +1,2 @@
-_drafts/
 _site/
-robots.txt
-humans.txt
-deploy.sh
+.sass-cache/

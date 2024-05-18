@@ -1,7 +1,44 @@
-url: www.kinnetica.com
-pygments: true
-permalink: pretty
-markdown: rdiscount
-paginate: 5
-exclude: ["deploy.sh", "README.md"]
-relative_permalinks: false
+# Site settings
+
+title: Shallow Thoughts # Title of your site
+email: me@carlosedp.com # Your contant email
+
+description: > # this means to ignore newlines until "baseurl:"
+  Technology, cooking and american football, all powered by music and good coffee.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://carlosedp.com" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+exclude: ['_sass', 'README.markdown', 'Rakefile', 'Gemfile']
+
+gems:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  path: atom.xml
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+# Social links.
+# Replace the word 'example' with your username if you want to include the icon in the left sidebar
+# Delete the word 'example' if you don't want to include the icon in the left sidebar
+
+twitter_username:     carlosedp  # Replace this with your Twitter username
+github_username:      carlosedp  # Replace this with your GitHub username
+linkedin_username:    carlosedp  # Replace this with your LinkedIn username
+google_plus_username: carlosedp  # Replace this with your Google+ username
+facebook_username:    carlosedp  # Replace this with your Facebook username
+dribbble_username:      # Replace this with your Dribbble username
+
+# Blog Configuration
+frontpage_posts: 1
+excerpt_posts: 0
+
+twitter:
+  username: carlosedp

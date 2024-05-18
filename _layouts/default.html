@@ -1,72 +1,129 @@
 <!DOCTYPE html>
+<html>
+  	<head>
+  		<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="google-site-verification" content="yOehIV2HtlnNr3L0RyUj3lqJtZQjXI8LBu9z_OTuLWY" />
+      <meta name="author" content="Carlos Eduardo de Paula"/>
+      <meta name="copyright" content="Copyright 2010 to Present"/>
+      <meta name="keywords" content="tech coffee food cooking apps development " />
+      <meta name="HandheldFriendly" content="True">
+      <meta name="MobileOptimized" content="320">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta http-equiv="cleartype" content="on">
+      <meta http-equiv="x-dns-prefetch-control" content="off">
 
-<!--
-o  o  o-O-o  o   o  o   o  o-oo  o-O-o  o-O-o    o-o    O  
-| /     |    |\  |  |\  |  |       |      |     /      / \ 
-OO      |    | \ |  | \ |  O-o     |      |    O      o-o-o
-| \     |    |  \|  |  \|  |       |      |     \     |   |
-o  o  o-O-o  o   o  o   o  o-oo    o    o-O-o    o-o  o   o
--->
+       {% seo %}
 
-<html lang="en">
-<head>
-  <title>{{ page.title }}</title>
+      <link href="http://plus.google.com/104461449883701745165" rel="publisher"/>
+  		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  		<script src="{{ site.baseurl }}/js/jquery.min.js"></script>
+  		<script src="{{ site.baseurl }}/js/jquery.poptrox.min.js"></script>
+  		<script src="{{ site.baseurl }}/js/skel.min.js"></script>
+  		<script src="{{ site.baseurl }}/js/init.js"></script>
+		<script src="https://www.retainable.io/assets/retainable/rss-embed/retainable-rss-embed.js"></script>
+  		<noscript>
+  			<link rel="stylesheet" href="{{ site.baseurl }}/css/skel.css" />
+  			<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css" />
+  			<link rel="stylesheet" href="{{ site.baseurl }}/css/style-xlarge.css" />
+  		</noscript>
+  		<!--[if lte IE 8]><link rel="stylesheet" href="{{ site.baseurl }}/css/ie/v8.css" /><![endif]-->
+      <link href="http://carlosedp.com/atom.xml" rel="alternate" title="Shallow Thoughts Feed" type="application/atom+xml" />
+  	</head>
 
-  <meta charset="utf-8" />
-  <meta name="author" content="Michael Levin" />
-  <meta content="{{page.description}}" name="description" />
-  <meta content="{{page.keywords}}" name="keywords" />
-  <meta name="google-site-verification" content="DqAgloRCaHDsh-QjkR1GFjGY6DfghzQTrQavEK0p9Bg" />
+	<body id="top">
 
-  <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="alternate" type="application/atom+xml" title="Kinnetica" href="http://feeds.feedburner.com/kinnetica" />
+      <header id="header">
+          <a href="/" class="image avatar"><img src="{{ site.baseurl }}/images/avatar.jpg" alt="" /></a>
+          <h1><strong>Hi, I'm Carlos.</strong><br>I'm an IT architect with interests in technology, gadgets, cooking and american football, all powered by music and good coffee.</h1>
+          <br>
+          <div class="align-center">
+          <a href="/projects">Projects</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          <a href="/archives">Archives</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          <a href="/about">About</a>
+          </div>
+      </header>
 
-  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:extralight' rel='stylesheet' type='text/css'>
+        {{ content }}
 
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
 
-<body>
-  <div id="page-wrap">
-    <div id="header">
-      <h1 id="main-title">
-        <a href="/">Kinnetica</a>
-      </h1>
-    </div>
-    <div id="nav">
-      <ul>
-        <li><a href="/archive/">Archive</a></li>
-        <li><a href="/projects/">Projects</a></li>
-        <li>
-          <a href="http://feeds.feedburner.com/kinnetica" onclick="javascript: _gaq.push(['_trackPageview', '/G3/feeds.feedburner.com/kinnetica']);"><img src="/images/rss.png" border="0" alt="Subscribe via RSS" title="Subscribe via RSS"/></a>
-          <a href="http://www.linkedin.com/in/levinm" onclick="javascript: _gaq.push(['_trackPageview', '/G2/linkedin.com']);"><img src="/images/linkedin.png" alt="Connect on LinkedIn" title="Connect on LinkedIn" border="0" /></a>
-          <a href="http://www.twitter.com/kinnetica" onclick="javascript: _gaq.push(['_trackPageview', '/G1/twitter.com']);"><img src="/images/twitter.png" alt="Follow on Twitter" title="Follow on Twitter" border="0" /></a>
-        </li>
-      </ul>
-    </div>
-    <div style="clear:both;"></div>
-    <div id="content-wrap">
-      {{ content }}
-    </div>
-    <div id="footer">
-      <p>&copy; 2011 Michael Levin. Licensed under <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons</a>. Icons by <a href="http://www.komodomedia.com">Komodo Media</a>. Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.</p>
-    </div>
-  </div>
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-9419543-1']);
-    _gaq.push(['_trackPageview']);
-    _gaq.push(['_trackPageLoadTime']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript';               
-      ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-  <!-- Google +1 -->
-  <script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
-</body>
+              {% if site.github_username %}
+              <li>
+                <a href="https://github.com/{{ site.github_username }}" class="icon fa-github">
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if site.twitter_username %}
+              <li>
+                <a href="https://twitter.com/{{ site.twitter_username }}" class="icon fa-twitter">
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if site.linkedin_username %}
+              <li>
+                <a href="https://linkedin.com/in/{{ site.linkedin_username }}" class="icon fa-linkedin">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if site.google_plus_username %}
+              <li>
+                <a href="https://plus.google.com/{{ site.google_plus_username }}" class="icon fa-google-plus">
+                  <span class="label">Google+</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if site.facebook_username %}
+              <li>
+                <a href="https://www.facebook.com/{{ site.facebook_username }}" class="icon fa-facebook">
+                  <span class="label">Facebook</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if site.dribbble_username %}
+              <li>
+                <a href="#" class="icon fa-dribbble">
+                  <span class="label">Dribbble</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if site.email %}
+              <li>
+                <a href="mailto:{{ site.email }}" class="icon fa-envelope-o">
+                  <span class="label">Email</span>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+            <!--<ul class="copyright">
+                <li>&copy; Carlos Eduardo de Paula</li>
+                <li>Design: </li>
+                <li>Images: </li>
+            </ul>-->
+        </footer>
+        <!-- Google Analytics -->
+        <script>
+            var _gaq = [['_setAccount', 'UA-555853-6'], ['_trackPageview']];
+            (function(d, t) {
+                var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+                g.async = true;
+                g.src = '//www.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g, s);
+            })(document, 'script');
+        </script>
+	</body>
 </html>
