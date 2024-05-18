@@ -1,13 +1,6 @@
-<div id="intro-dm">
-  <h2>We're an awesome blog about web design</h2>
-  <p>Designmodo is a great resource of informative material for designers and web developers. We are makers of highly-rated User Interface Packs, you can get acquainted with Designmodo shop here, and you can download a couple of other ui packs for free.</p>
-  <h2>We're an awesome blog about web design</h2>
-  <p>Designmodo is a great resource of informative material for designers and web developers. We are makers of highly-rated User Interface Packs, you can get acquainted with Designmodo shop here, and you can download a couple of other ui packs for free.</p>
-  <h2>We're an awesome blog about web design</h2>
-  <p>Designmodo is a great resource of informative material for designers and web developers. We are makers of highly-rated User Interface Packs, you can get acquainted with Designmodo shop here, and you can download a couple of other ui packs for free.</p>
-</div>
-
-<header id="header">
+{% block header %}
+  <!-- Хедер -->
+  <header id="header">
     <div class="container">
       <h1><a href="{{ site_url }}">{{ name }}</a></h1>
       <h2>{{ tag1 }} <span>{{ tag2 }}</span></h2>
@@ -36,4 +29,5 @@
         <a href="{{ email }}" class="email"><i class="fa fa-envelope"></i></a>
       </div>
       </div>
-  </header><!-- Конец хедера -->   
+  </header><!-- Конец хедера -->    
+{% endblock %}
