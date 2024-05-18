@@ -1,6 +1,6 @@
-{% block education %}
+
 <div>
     <input type="submit" name="watch" value="Watch">
     <p></p>
 </div>
-{% endblock %}    
+    
