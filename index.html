@@ -1,20 +1,40 @@
----
-layout: default
----
+{% extends "base.html" %}
+{% block content %}
 
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
 
-<!-- Main -->
-<div id="main">
-    <section>
-        <div id="carlosedp-rss-embed" 
-        data-rss="https://medium.com/feed/@carlosedp"
-        data-maxcols="3" 
-        data-layout="grid" 
-        data-poststyle="inline" 
-        data-readmore="Read the rest" 
-        data-buttonclass="btn btn-primary" 
-        data-offset="-100"></div>
-    </section>
-    <hr>
-    For older posts, check the <a href="{{site.base_dir}}/archives">archives &raquo;</a>
-</div>
+{% block resume %}
+{% include "resume.html" %}
+{% endblock %}
+
+{% block education %}
+{% include "education.html" %}
+{% endblock %}
+
+{% block counters %}
+{% include "counters.html" %}
+{% endblock %}
+
+{% block skills %}
+{% include "skills.html" %}
+{% endblock %}
+
+{% block interests %}
+{% include "interests.html" %}
+{% endblock %}
+
+{% block portfolio %}
+{% include "portfolio.html" %}
+{% endblock %}
+
+{% block blog %}
+{% include "blog.html" %}
+{% endblock %}
+
+{% block contacts %}
+{% include "contacts.html" %}
+{% endblock %}
+
+{% endblock %}
