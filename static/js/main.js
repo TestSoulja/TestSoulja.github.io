@@ -1,242 +1,186 @@
-
-(function() {
+(function () {
   "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
+  var select = function (selector, all) {
+    return all
+      ? Array.prototype.slice.call(document.querySelectorAll(selector))
+      : document.querySelector(selector);
+  };
+
+  /* ------------------------------------------------------------------ *
+   * Mobile navigation
+   * ------------------------------------------------------------------ */
+  var navbar = select("#navbar");
+  var navToggle = select(".mobile-nav-toggle");
+
+  function closeMobileNav() {
+    if (navbar && navbar.classList.contains("navbar-mobile")) {
+      navbar.classList.remove("navbar-mobile");
+      if (navToggle) navToggle.setAttribute("aria-expanded", "false");
     }
   }
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
+  if (navToggle) {
+    navToggle.addEventListener("click", function () {
+      var open = navbar.classList.toggle("navbar-mobile");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        var firstLink = navbar.querySelector(".nav-link");
+        if (firstLink) firstLink.focus({ preventScroll: true });
       }
-    }
+    });
   }
 
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+  /* ------------------------------------------------------------------ *
+   * Section switching
+   * ------------------------------------------------------------------ */
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+  function showSection(hash) {
+    var section = select(hash);
+    var header = select("#header");
+    if (!section || !header) return false;
 
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '#navbar .nav-link', function(e) {
-    let section = select(this.hash)
-    if (section) {
-      e.preventDefault()
+    var navLinks = select("#navbar .nav-link", true);
+    navLinks.forEach(function (item) {
+      item.classList.toggle("active", item.getAttribute("href") === hash);
+    });
 
-      let navbar = select('#navbar')
-      let header = select('#header')
-      let sections = select('section', true)
-      let navlinks = select('#navbar .nav-link', true)
+    closeMobileNav();
 
-      navlinks.forEach((item) => {
-        item.classList.remove('active')
-      })
-
-      this.classList.add('active')
-
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-
-      if (this.hash == '#header') {
-        header.classList.remove('header-top')
-        sections.forEach((item) => {
-          item.classList.remove('section-show')
-        })
-        return;
-      }
-
-      if (!header.classList.contains('header-top')) {
-        header.classList.add('header-top')
-        setTimeout(function() {
-          sections.forEach((item) => {
-            item.classList.remove('section-show')
-          })
-          section.classList.add('section-show')
-
-        }, 350);
-      } else {
-        sections.forEach((item) => {
-          item.classList.remove('section-show')
-        })
-        section.classList.add('section-show')
-      }
-
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Activate/show sections on load with hash links
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      let initial_nav = select(window.location.hash)
-
-      if (initial_nav) {
-        let header = select('#header')
-        let navlinks = select('#navbar .nav-link', true)
-
-        header.classList.add('header-top')
-
-        navlinks.forEach((item) => {
-          if (item.getAttribute('href') == window.location.hash) {
-            item.classList.add('active')
-          } else {
-            item.classList.remove('active')
-          }
-        })
-
-        setTimeout(function() {
-          initial_nav.classList.add('section-show')
-        }, 350);
-
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
-  }
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
-
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
+    if (hash === "#header") {
+      header.classList.remove("header-top");
+      select("section", true).forEach(function (item) {
+        item.classList.remove("section-show");
       });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-      }, true);
+      return true;
     }
 
-  });
-
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Initiate portfolio details lightbox 
-   */
-  const portfolioDetailsLightbox = GLightbox({
-    selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
+    if (!header.classList.contains("header-top")) {
+      header.classList.add("header-top");
+      window.setTimeout(function () {
+        select("section", true).forEach(function (item) {
+          item.classList.remove("section-show");
+        });
+        section.classList.add("section-show");
+      }, 350);
+    } else {
+      select("section", true).forEach(function (item) {
+        item.classList.remove("section-show");
+      });
+      section.classList.add("section-show");
     }
+
+    return true;
+  }
+
+  document.querySelectorAll('#navbar .nav-link').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      if (showSection(this.hash)) {
+        event.preventDefault();
+        scrollToTop();
+      }
+    });
   });
 
-})()
+  /* Show the section referenced by the URL hash on load */
+  window.addEventListener("load", function () {
+    var hash = window.location.hash;
+    if (!hash) return;
+
+    var initial = select(hash);
+    if (!initial) return;
+
+    select("#header").classList.add("header-top");
+    select("#navbar .nav-link", true).forEach(function (item) {
+      item.classList.toggle("active", item.getAttribute("href") === hash);
+    });
+
+    window.setTimeout(function () {
+      initial.classList.add("section-show");
+    }, 350);
+    scrollToTop();
+  });
+
+  /* ------------------------------------------------------------------ *
+   * Blog tag filter (replaces Isotope)
+   * ------------------------------------------------------------------ */
+  var filterList = select("#portfolio-flters");
+  if (filterList) {
+    var items = select(".portfolio-container .portfolio-item", true);
+    filterList.addEventListener("click", function (event) {
+      var target = event.target.closest("li[data-filter]");
+      if (!target) return;
+
+      filterList.querySelectorAll("li").forEach(function (li) {
+        li.classList.remove("filter-active");
+      });
+      target.classList.add("filter-active");
+
+      var filter = target.getAttribute("data-filter");
+      items.forEach(function (item) {
+        item.hidden = filter !== "*" && !item.classList.contains(filter.slice(1));
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Lightbox for portfolio cards and blog posts
+   * Loads the target page in an iframe only when it is opened.
+   * ------------------------------------------------------------------ */
+  var detailLinks = select(".portfolio-details-lightbox", true);
+  if (detailLinks.length) {
+    var lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.hidden = true;
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.innerHTML =
+      '<div class="lightbox-panel">' +
+      '<button class="lightbox-close" type="button" aria-label="Close">&times;</button>' +
+      '<iframe title="Project details" allowfullscreen></iframe>' +
+      "</div>";
+    document.body.appendChild(lightbox);
+
+    var frame = lightbox.querySelector("iframe");
+    var closeButton = lightbox.querySelector(".lightbox-close");
+    var lastFocused = null;
+
+    function openLightbox(url, title, trigger) {
+      lastFocused = trigger || document.activeElement;
+      frame.title = title || "Project details";
+      frame.src = url;
+      lightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+      closeButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      frame.src = "about:blank";
+      document.body.classList.remove("lightbox-open");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    detailLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        if (event.defaultPrevented || event.button !== 0 ||
+            event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+        event.preventDefault();
+        openLightbox(link.href, link.textContent.trim(), link);
+      });
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (!lightbox.hidden && event.key === "Escape") closeLightbox();
+    });
+  }
+})();
