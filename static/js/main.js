@@ -105,6 +105,64 @@
   });
 
   /* ------------------------------------------------------------------ *
+   * Language switcher: stay in the same section and scroll position
+   * ------------------------------------------------------------------ */
+  var VIEW_KEY = "lang-view";
+  var langLinks = select(".lang-switcher a", true);
+
+  function currentSectionHash() {
+    var header = select("#header");
+    if (!header || !header.classList.contains("header-top")) return "";
+    var shown = select("section.section-show");
+    return shown && shown.id ? "#" + shown.id : "";
+  }
+
+  function rememberView(targetPath) {
+    var doc = document.documentElement;
+    try {
+      sessionStorage.setItem(VIEW_KEY, JSON.stringify({
+        path: targetPath,
+        hash: currentSectionHash(),
+        y: window.scrollY,
+        max: Math.max(doc.scrollHeight - window.innerHeight, 0)
+      }));
+    } catch (error) {
+      /* sessionStorage can be unavailable, the switch still works */
+    }
+  }
+
+  function restoreView() {
+    var saved = null;
+    try {
+      saved = JSON.parse(sessionStorage.getItem(VIEW_KEY) || "null");
+      sessionStorage.removeItem(VIEW_KEY);
+    } catch (error) {
+      return;
+    }
+    if (!saved || saved.path !== window.location.pathname) return;
+    if ((saved.hash || "") !== (window.location.hash || "")) return;
+    if (!saved.y) return;
+
+    window.setTimeout(function () {
+      var max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+      var top = saved.max > 0 ? Math.round(saved.y / saved.max * max) : 0;
+      window.scrollTo({ top: Math.min(top, max), behavior: "auto" });
+    }, 500);
+  }
+
+  window.addEventListener("load", restoreView);
+
+  langLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      var hash = currentSectionHash();
+      var url = new URL(link.getAttribute("href"), window.location.origin);
+      url.hash = hash;
+      link.setAttribute("href", url.pathname + url.search + url.hash);
+      rememberView(url.pathname);
+    });
+  });
+
+  /* ------------------------------------------------------------------ *
    * Blog tag filter (replaces Isotope)
    * ------------------------------------------------------------------ */
   var filterList = select("#portfolio-flters");
