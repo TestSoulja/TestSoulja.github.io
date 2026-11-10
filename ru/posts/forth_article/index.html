@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Продвинутый Django — Сергей Эккер</title>
+  <meta name="description" content="Работаем с Django ORM: описываем модели блога, авторов и постов без SQL-запросов.">
+  <meta name="author" content="Sergei Ekker">
+  <meta name="theme-color" content="#040404">
+  <link rel="canonical" href="https://testsoulja.github.io/ru/posts/forth_article/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/posts/forth_article/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/posts/forth_article/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/posts/forth_article/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="Продвинутый Django — Сергей Эккер">
+  <meta property="og:description" content="Работаем с Django ORM: описываем модели блога, авторов и постов без SQL-запросов.">
+  <meta property="og:image" content="https://testsoulja.github.io/static/img/portfolio/post.jpg">
+  <meta property="og:url" content="https://testsoulja.github.io/ru/posts/forth_article/">
+
+  <link rel="icon" href="/static/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
+  <link rel="stylesheet" href="/pygments.css">
+</head>
+<body class="page-post">
+  <div class="lang-switcher" role="group" aria-label="Язык">
+    <a href="/posts/forth_article/" hreflang="en" lang="en">EN</a>
+    <a class="is-active" href="/ru/posts/forth_article/" hreflang="ru" lang="ru" aria-current="true">RU</a>
+  </div>
+  <main id="main">
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="portfolio-title">Продвинутый Django</h2>
+          </div>
+          <div class="col-lg-8 portfolio-info">
+            <ul>
+              <li><strong>Категория</strong>: Django</li>
+              <li><strong>Проект</strong>: Курс по Django - уровень 2</li>
+              <li><strong>Статья опубликована</strong>: 2022-06-16</li>
+              <li><strong>Платформа</strong>: <a href="http://example.com">Django Практикум</a></li>
+            </ul>
+
+            <p>Django ORM (Object Relational Mapping) является одной из самых мощных особенностей Django. Это позволяет нам взаимодействовать с базой данных, используя код Python, а не SQL.</p>
+            <p>Для демонстрации опишу такую модель:</p>
+            <div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">models</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Blog</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="w">    </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+<span class="w">    </span><span class="n">published</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="n">blog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Blog</span><span class="p">,</span><span class="w"> </span><span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+<span class="w">    </span><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Author</span><span class="p">,</span><span class="w"> </span><span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+</code></pre></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

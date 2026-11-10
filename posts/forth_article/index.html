@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Продвинутый Django — Sergei Ekker</title>
-  <meta name="description" content="Работаем с Django ORM: описываем модели блога, авторов и постов без SQL-запросов.">
+  <title>Advanced Django — Sergei Ekker</title>
+  <meta name="description" content="Working with the Django ORM: describing models for a blog, authors and posts without SQL queries.">
   <meta name="author" content="Sergei Ekker">
   <meta name="theme-color" content="#040404">
   <link rel="canonical" href="https://testsoulja.github.io/posts/forth_article/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/posts/forth_article/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/posts/forth_article/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/posts/forth_article/">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Продвинутый Django — Sergei Ekker">
-  <meta property="og:description" content="Работаем с Django ORM: описываем модели блога, авторов и постов без SQL-запросов.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:title" content="Advanced Django — Sergei Ekker">
+  <meta property="og:description" content="Working with the Django ORM: describing models for a blog, authors and posts without SQL queries.">
   <meta property="og:image" content="https://testsoulja.github.io/static/img/portfolio/post.jpg">
   <meta property="og:url" content="https://testsoulja.github.io/posts/forth_article/">
 
@@ -19,27 +24,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
   <link rel="stylesheet" href="/pygments.css">
 </head>
 <body class="page-post">
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <a class="is-active" href="/posts/forth_article/" hreflang="en" lang="en" aria-current="true">EN</a>
+    <a href="/ru/posts/forth_article/" hreflang="ru" lang="ru">RU</a>
+  </div>
   <main id="main">
     <div id="portfolio-details" class="portfolio-details">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2 class="portfolio-title">Продвинутый Django</h2>
+            <h2 class="portfolio-title">Advanced Django</h2>
           </div>
           <div class="col-lg-8 portfolio-info">
             <ul>
-              <li><strong>Категория</strong>: Django</li>
-              <li><strong>Проект</strong>: Курс по Django - уровень 2</li>
-              <li><strong>Статья опубликована</strong>: 2022-06-16</li>
-              <li><strong>Платформа</strong>: <a href="http://example.com">Django Практикум</a></li>
+              <li><strong>Category</strong>: Django</li>
+              <li><strong>Project</strong>: Django course — level 2</li>
+              <li><strong>Published</strong>: 2022-06-16</li>
+              <li><strong>Platform</strong>: <a href="http://example.com">Django Workshop</a></li>
             </ul>
 
-            <p>Django ORM (Object Relational Mapping) является одной из самых мощных особенностей Django. Это позволяет нам взаимодействовать с базой данных, используя код Python, а не SQL.</p>
-            <p>Для демонстрации опишу такую модель:</p>
+            <p>The Django ORM (Object Relational Mapping) is one of Django's most powerful features. It allows us to interact with the database using Python code instead of SQL.</p>
+            <p>To demonstrate, I'll describe the following model:</p>
             <div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">models</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Blog</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>

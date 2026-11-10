@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Как Flask обрабатывает запросы — Сергей Эккер</title>
+  <meta name="description" content="Разбираем маршрутизацию Flask: как URL сопоставляются с функциями представления через route.">
+  <meta name="author" content="Sergei Ekker">
+  <meta name="theme-color" content="#040404">
+  <link rel="canonical" href="https://testsoulja.github.io/ru/posts/fifth_article/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/posts/fifth_article/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/posts/fifth_article/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/posts/fifth_article/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="Как Flask обрабатывает запросы — Сергей Эккер">
+  <meta property="og:description" content="Разбираем маршрутизацию Flask: как URL сопоставляются с функциями представления через route.">
+  <meta property="og:image" content="https://testsoulja.github.io/static/img/portfolio/post.jpg">
+  <meta property="og:url" content="https://testsoulja.github.io/ru/posts/fifth_article/">
+
+  <link rel="icon" href="/static/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
+  <link rel="stylesheet" href="/pygments.css">
+</head>
+<body class="page-post">
+  <div class="lang-switcher" role="group" aria-label="Язык">
+    <a href="/posts/fifth_article/" hreflang="en" lang="en">EN</a>
+    <a class="is-active" href="/ru/posts/fifth_article/" hreflang="ru" lang="ru" aria-current="true">RU</a>
+  </div>
+  <main id="main">
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="portfolio-title">Как Flask обрабатывает запросы</h2>
+          </div>
+          <div class="col-lg-8 portfolio-info">
+            <ul>
+              <li><strong>Категория</strong>: Flask</li>
+              <li><strong>Проект</strong>: Курс по Flask для начинающих</li>
+              <li><strong>Статья опубликована</strong>: 2022-06-17</li>
+              <li><strong>Платформа</strong>: <a href="http://example.com">Flask Практикум</a></li>
+            </ul>
+
+            <p>Откуда Flask знает, какую функцию выводить, когда он получает запрос от клиента?</p>
+            <p>Flask сопоставляет URL и функции отображения, которые будут выводиться. Определение соответствий (маршрутизация) создается с помощью декоратора route или метода add_url_rule() в экземпляре Flask. Получить доступ к этим соответствиям можно с помощью атрибута url_map у экземпляра Flask.</p>
+            <div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="nn">main2</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">app</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">url_map</span>
+<span class="n">Map</span><span class="p">([</span><span class="o">&lt;</span><span class="n">Rule</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">OPTIONS</span><span class="p">,</span><span class="w"> </span><span class="n">GET</span><span class="p">,</span><span class="w"> </span><span class="n">HEAD</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">index</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w"> </span><span class="o">&lt;</span><span class="n">Rule</span><span class="w"> </span><span class="s1">&#39;/static/&lt;filename&gt;&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">OPTIONS</span><span class="p">,</span><span class="w"> </span><span class="n">GET</span><span class="p">,</span><span class="w"> </span><span class="n">HEAD</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">  </span><span class="n">static</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w"> </span><span class="o">&lt;</span><span class="n">Rule</span><span class="w"> </span><span class="s1">&#39;/books/&lt;genre&gt;&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">OPTIONS</span><span class="p">,</span><span class="w"> </span><span class="n">GET</span><span class="p">,</span><span class="w"> </span><span class="n">HEAD</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">  </span><span class="n">books</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w"> </span><span class="o">&lt;</span><span class="n">Rule</span><span class="w"> </span><span class="s1">&#39;/user/&lt;user_id&gt;&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">OPTIONS</span><span class="p">,</span><span class="w"> </span><span class="n">GET</span><span class="p">,</span><span class="w"> </span><span class="n">HEAD</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">  </span><span class="n">user_profile</span><span class="o">&gt;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span>
+</code></pre></div>
+
+            <p>Как видно, есть 4 правила. Flask определяет соответствия URL в следующем формате:</p>
+            <div class="codehilite"><pre><span></span><code><span class="n">url</span><span class="w"> </span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">HTTP</span><span class="w"> </span><span class="n">methods</span><span class="w"> </span><span class="n">handled</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">route</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">execute</span>
+</code></pre></div>
+
+            <p>Путь /static/&lt;filename&gt; автоматически добавляется для статических файлов Flask. О работе со статическими файлами речь пойдет в отдельном уроке «Обслуживание статических файлов во Flask».</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

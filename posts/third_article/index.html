@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flask с нуля — Sergei Ekker</title>
-  <meta name="description" content="Создаем простое приложение Flask «Hello World» и запускаем его локально.">
+  <title>Flask from scratch — Sergei Ekker</title>
+  <meta name="description" content="Creating a simple Flask Hello World application and running it locally.">
   <meta name="author" content="Sergei Ekker">
   <meta name="theme-color" content="#040404">
   <link rel="canonical" href="https://testsoulja.github.io/posts/third_article/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/posts/third_article/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/posts/third_article/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/posts/third_article/">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Flask с нуля — Sergei Ekker">
-  <meta property="og:description" content="Создаем простое приложение Flask «Hello World» и запускаем его локально.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:title" content="Flask from scratch — Sergei Ekker">
+  <meta property="og:description" content="Creating a simple Flask Hello World application and running it locally.">
   <meta property="og:image" content="https://testsoulja.github.io/static/img/portfolio/post.jpg">
   <meta property="og:url" content="https://testsoulja.github.io/posts/third_article/">
 
@@ -19,26 +24,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
   <link rel="stylesheet" href="/pygments.css">
 </head>
 <body class="page-post">
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <a class="is-active" href="/posts/third_article/" hreflang="en" lang="en" aria-current="true">EN</a>
+    <a href="/ru/posts/third_article/" hreflang="ru" lang="ru">RU</a>
+  </div>
   <main id="main">
     <div id="portfolio-details" class="portfolio-details">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2 class="portfolio-title">Flask с нуля</h2>
+            <h2 class="portfolio-title">Flask from scratch</h2>
           </div>
           <div class="col-lg-8 portfolio-info">
             <ul>
-              <li><strong>Категория</strong>: Flask</li>
-              <li><strong>Проект</strong>: Курс по Flask для начинающих</li>
-              <li><strong>Статья опубликована</strong>: 2022-06-14</li>
-              <li><strong>Платформа</strong>: <a href="http://example.com">Flask Практикум</a></li>
+              <li><strong>Category</strong>: Flask</li>
+              <li><strong>Project</strong>: Flask course for beginners</li>
+              <li><strong>Published</strong>: 2022-06-14</li>
+              <li><strong>Platform</strong>: <a href="http://example.com">Flask Workshop</a></li>
             </ul>
 
-            <p>Начать знакомство с Flask можно с создания простого приложения, которое выводит “Hello World”. Создаем новый файл main.py и вводим следующий код.</p>
+            <p>You can start getting acquainted with Flask by creating a simple application that outputs “Hello World”. Create a new file main.py and enter the following code.</p>
             <div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Flask</span>
 
 <span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -51,7 +60,7 @@
 <span class="w">    </span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
-            <p>Это приложение “Hello World”, созданное с помощью фреймворка Flask. Чтобы запустить main.py, нужно выполнить следующую команду:</p>
+            <p>This is the “Hello World” application built with the Flask framework. To run main.py, execute the following command:</p>
             <div class="codehilite"><pre><span></span><code>(env) python main.py
 Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 </code></pre></div>

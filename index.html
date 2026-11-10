@@ -3,16 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sergey Ekker: Game designer and python developer</title>
-  <meta name="description" content="Sergey Ekker - portfolio, resume and some more">
+  <title>Sergei Ekker: Game designer and Python developer</title>
+  <meta name="description" content="Sergei Ekker — portfolio, resume and more">
   <meta name="keywords" content="Python, Game design">
   <meta name="author" content="Sergei Ekker">
   <meta name="theme-color" content="#040404">
   <link rel="canonical" href="https://testsoulja.github.io/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sergey Ekker: Game designer and python developer">
-  <meta property="og:description" content="Sergey Ekker - portfolio, resume and some more">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:title" content="Sergei Ekker: Game designer and Python developer">
+  <meta property="og:description" content="Sergei Ekker — portfolio, resume and more">
   <meta property="og:image" content="https://testsoulja.github.io/static/img/me.jpg">
   <meta property="og:url" content="https://testsoulja.github.io/">
 
@@ -21,17 +26,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
   <link rel="preload" as="image" href="/static/img/bg.jpg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
   <script src="/static/js/main.js" defer></script>
 </head>
 <body>
+<div class="lang-switcher" role="group" aria-label="Language">
+  <a class="is-active" href="/" hreflang="en" lang="en" aria-current="true">EN</a>
+  <a href="/ru/" hreflang="ru" lang="ru">RU</a>
+</div>
 <main id="main">
 
   <!-- Header -->
   <header id="header">
     <div class="container">
       <h1><a href="https://testsoulja.github.io/">Sergei Ekker</a></h1>
-      <h2>Game designer <span>and python developer</span></h2>
+      <h2>Game designer <span>and Python developer</span></h2>
 
       <nav id="navbar" class="navbar" aria-label="Main navigation">
         <ul>
@@ -258,12 +267,12 @@
   <section id="blog" class="portfolio">
     <div class="container">
       <div class="section-title">
-        <h2>Блог</h2>
-        <p>Заметки о проектах</p>
+        <h2>Blog</h2>
+        <p>Notes about projects</p>
       </div>
 
       <ul id="portfolio-flters">
-        <li data-filter="*" class="filter-active">Теги</li>
+        <li data-filter="*" class="filter-active">Tags</li>
         <li data-filter=".django">django</li>
         <li data-filter=".flask">flask</li>
         <li data-filter=".python">python</li>
@@ -274,8 +283,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/fifth_article/" class="portfolio-details-lightbox">Как Flask обрабатывает запросы</a></h3>
-              <p>Маршрутизация в Flask и декоратор route</p>
+              <h3><a href="/posts/fifth_article/" class="portfolio-details-lightbox">How Flask handles requests</a></h3>
+              <p>Routing in Flask and the route decorator</p>
               <div class="portfolio-links">
                 <a href="/posts/fifth_article/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -287,8 +296,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/forth_article/" class="portfolio-details-lightbox">Продвинутый Django</a></h3>
-              <p>Разбираемся с ORM в Django и работаем с базой без SQL-запросов</p>
+              <h3><a href="/posts/forth_article/" class="portfolio-details-lightbox">Advanced Django</a></h3>
+              <p>Working with the Django ORM and the database without SQL queries</p>
               <div class="portfolio-links">
                 <a href="/posts/forth_article/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -300,8 +309,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/login_in_django/" class="portfolio-details-lightbox">Система авторизации в Django</a></h3>
-              <p>Создаем модуль авторизации и разграничиваем права</p>
+              <h3><a href="/posts/login_in_django/" class="portfolio-details-lightbox">Authentication system in Django</a></h3>
+              <p>Building an authentication module and separating user permissions</p>
               <div class="portfolio-links">
                 <a href="/posts/login_in_django/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -313,8 +322,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/third_article/" class="portfolio-details-lightbox">Flask с нуля</a></h3>
-              <p>Функции представления и маршруты</p>
+              <h3><a href="/posts/third_article/" class="portfolio-details-lightbox">Flask from scratch</a></h3>
+              <p>View functions and routes</p>
               <div class="portfolio-links">
                 <a href="/posts/third_article/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -326,8 +335,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/first_article/" class="portfolio-details-lightbox">Начинаем работать с Flask</a></h3>
-              <p>Разбираем основные концепции и возможности фреймворка</p>
+              <h3><a href="/posts/first_article/" class="portfolio-details-lightbox">Getting started with Flask</a></h3>
+              <p>Exploring the core concepts and features of the framework</p>
               <div class="portfolio-links">
                 <a href="/posts/first_article/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -339,8 +348,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/models_in_django/" class="portfolio-details-lightbox">Django на практике</a></h3>
-              <p>Определяем модели для сайта городской библиотеки</p>
+              <h3><a href="/posts/models_in_django/" class="portfolio-details-lightbox">Django in practice</a></h3>
+              <p>Defining models for a city library website</p>
               <div class="portfolio-links">
                 <a href="/posts/models_in_django/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -352,8 +361,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/second_article/" class="portfolio-details-lightbox">Python в машинном обучении</a></h3>
-              <p>Как Python упрощает сложные вещи</p>
+              <h3><a href="/posts/second_article/" class="portfolio-details-lightbox">Python in machine learning</a></h3>
+              <p>How Python makes complex things simple</p>
               <div class="portfolio-links">
                 <a href="/posts/second_article/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -365,8 +374,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/parsing_with_python/" class="portfolio-details-lightbox">Парсим на Python</a></h3>
-              <p>Модуль Pyparsing для новичков</p>
+              <h3><a href="/posts/parsing_with_python/" class="portfolio-details-lightbox">Parsing with Python</a></h3>
+              <p>The Pyparsing module for beginners</p>
               <div class="portfolio-links">
                 <a href="/posts/parsing_with_python/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -378,8 +387,8 @@
           <div class="portfolio-wrap">
             <img src="/static/img/portfolio/portfolio-1.jpg" width="826" height="551" alt="" loading="lazy" decoding="async">
             <div class="portfolio-info">
-              <h3><a href="/posts/scraping/" class="portfolio-details-lightbox">Веб-скрапинг с помощью Python</a></h3>
-              <p>Обсуждаем скрапинг динамических страниц</p>
+              <h3><a href="/posts/scraping/" class="portfolio-details-lightbox">Web scraping with Python</a></h3>
+              <p>Discussing scraping of dynamic pages</p>
               <div class="portfolio-links">
                 <a href="/posts/scraping/" class="portfolio-details-lightbox" aria-label="Read the article"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-caret-down-circle"></use></svg></a>
               </div>
@@ -407,7 +416,7 @@
 
         <div class="info-box">
           <svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bx-share-alt"></use></svg>
-          <h3>VK/Github</h3>
+          <h3>VK/GitHub</h3>
           <div class="social-links">
             <a href="https://vk.com/testersoulja" class="vkontakte" aria-label="VK"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bxl-vk"></use></svg></a>
             <a href="https://github.com/TestSoulja" class="github" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/static/img/icons.svg#bi-github"></use></svg></a>

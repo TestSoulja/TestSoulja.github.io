@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Начинаем работать с Flask — Sergei Ekker</title>
-  <meta name="description" content="Разбираем основные концепции Flask: создание приложения, маршруты и функции представления.">
+  <title>Getting started with Flask — Sergei Ekker</title>
+  <meta name="description" content="Exploring the core concepts of Flask: creating an application, routes and view functions.">
   <meta name="author" content="Sergei Ekker">
   <meta name="theme-color" content="#040404">
   <link rel="canonical" href="https://testsoulja.github.io/posts/first_article/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/posts/first_article/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/posts/first_article/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/posts/first_article/">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Начинаем работать с Flask — Sergei Ekker">
-  <meta property="og:description" content="Разбираем основные концепции Flask: создание приложения, маршруты и функции представления.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:title" content="Getting started with Flask — Sergei Ekker">
+  <meta property="og:description" content="Exploring the core concepts of Flask: creating an application, routes and view functions.">
   <meta property="og:image" content="https://testsoulja.github.io/static/img/portfolio/post.jpg">
   <meta property="og:url" content="https://testsoulja.github.io/posts/first_article/">
 
@@ -19,23 +24,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
   <link rel="stylesheet" href="/pygments.css">
 </head>
 <body class="page-post">
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <a class="is-active" href="/posts/first_article/" hreflang="en" lang="en" aria-current="true">EN</a>
+    <a href="/ru/posts/first_article/" hreflang="ru" lang="ru">RU</a>
+  </div>
   <main id="main">
     <div id="portfolio-details" class="portfolio-details">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2 class="portfolio-title">Начинаем работать с Flask</h2>
+            <h2 class="portfolio-title">Getting started with Flask</h2>
           </div>
           <div class="col-lg-8 portfolio-info">
             <ul>
-              <li><strong>Категория</strong>: Flask</li>
-              <li><strong>Проект</strong>: Курс по Flask для начинающих</li>
-              <li><strong>Статья опубликована</strong>: 2022-06-12</li>
-              <li><strong>Платформа</strong>: <a href="http://example.com">Flask Практикум</a></li>
+              <li><strong>Category</strong>: Flask</li>
+              <li><strong>Project</strong>: Flask course for beginners</li>
+              <li><strong>Published</strong>: 2022-06-12</li>
+              <li><strong>Platform</strong>: <a href="http://example.com">Flask Workshop</a></li>
             </ul>
 
             <div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Flask</span>
@@ -43,16 +52,16 @@
 <span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </code></pre></div>
 
-            <p>В первой строке класс Flask импортируется из пакета flask.</p>
-            <p>Во второй строке создается объект Flask. Для этого конструктору Flask назначается аргумент <strong>name</strong>. Конструктор Flask должен иметь один обязательный аргумент. Им служит название пакета. В большинстве случаев значение <strong>name</strong> подходит. Название пакета приложения используется фреймворком Flask, чтобы находить статические файлы, шаблоны и т. д.</p>
-            <h2>Создание route (путей)</h2>
-            <p>Маршрут (или путь) используется во фреймворке Flask для привязки URL к функции представления. Эта функция отвечает на запрос. Во Flask декоратор route используется, чтобы связать URL адрес с функций. Вот как маршрут создается.</p>
+            <p>On the first line, the Flask class is imported from the flask package.</p>
+            <p>On the second line, a Flask object is created. To do this, the <strong>name</strong> argument is passed to the Flask constructor. The Flask constructor must have one required argument — the name of the package. In most cases the value of <strong>name</strong> is suitable. The application package name is used by Flask to find static files, templates, etc.</p>
+            <h2>Creating routes</h2>
+            <p>A route is used in Flask to bind a URL to a view function. This function handles the request. In Flask, the route decorator is used to associate a URL with a function. Here is how a route is created.</p>
             <div class="codehilite"><pre><span></span><code><span class="nv">@app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="n">def</span><span class="w"> </span><span class="k">index</span><span class="p">()</span><span class="err">:</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span>
 </code></pre></div>
 
-            <p>Этот код назначает функцию index() обработчиком корневого URL в приложении. Другими словами, каждый раз, когда приложение будет получать запрос, где путь — /, вызывается функция index(), и на этом запрос завершается.</p>
+            <p>This code makes the index() function the handler for the root URL of the application. In other words, every time the application receives a request whose path is /, the index() function is called and the request is completed there.</p>
           </div>
         </div>
       </div>

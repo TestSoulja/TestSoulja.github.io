@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Парсим на Python — Sergei Ekker</title>
-  <meta name="description" content="Разбираем парсинг кода на Python: грамматика импорта, регулярные выражения и модуль re.">
+  <title>Parsing with Python — Sergei Ekker</title>
+  <meta name="description" content="Exploring code parsing in Python: import grammar, regular expressions and the re module.">
   <meta name="author" content="Sergei Ekker">
   <meta name="theme-color" content="#040404">
   <link rel="canonical" href="https://testsoulja.github.io/posts/parsing_with_python/">
+  <link rel="alternate" hreflang="en" href="https://testsoulja.github.io/posts/parsing_with_python/">
+  <link rel="alternate" hreflang="ru" href="https://testsoulja.github.io/ru/posts/parsing_with_python/">
+  <link rel="alternate" hreflang="x-default" href="https://testsoulja.github.io/posts/parsing_with_python/">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Парсим на Python — Sergei Ekker">
-  <meta property="og:description" content="Разбираем парсинг кода на Python: грамматика импорта, регулярные выражения и модуль re.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:title" content="Parsing with Python — Sergei Ekker">
+  <meta property="og:description" content="Exploring code parsing in Python: import grammar, regular expressions and the re module.">
   <meta property="og:image" content="https://testsoulja.github.io/static/img/portfolio/post.jpg">
   <meta property="og:url" content="https://testsoulja.github.io/posts/parsing_with_python/">
 
@@ -19,35 +24,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;family=Poppins:wght@400;500;600;700&amp;family=Raleway:wght@400;600;700&amp;display=swap">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=2">
   <link rel="stylesheet" href="/pygments.css">
 </head>
 <body class="page-post">
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <a class="is-active" href="/posts/parsing_with_python/" hreflang="en" lang="en" aria-current="true">EN</a>
+    <a href="/ru/posts/parsing_with_python/" hreflang="ru" lang="ru">RU</a>
+  </div>
   <main id="main">
     <div id="portfolio-details" class="portfolio-details">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2 class="portfolio-title">Парсим на Python</h2>
+            <h2 class="portfolio-title">Parsing with Python</h2>
           </div>
           <div class="col-lg-8 portfolio-info">
             <ul>
-              <li><strong>Категория</strong>: Python</li>
-              <li><strong>Проект</strong>: Курс по Python для начинающих</li>
-              <li><strong>Статья опубликована</strong>: 2022-06-10</li>
-              <li><strong>Платформа</strong>: <a href="http://example.com">Python Практикум</a></li>
+              <li><strong>Category</strong>: Python</li>
+              <li><strong>Project</strong>: Python course for beginners</li>
+              <li><strong>Published</strong>: 2022-06-10</li>
+              <li><strong>Platform</strong>: <a href="http://example.com">Python Workshop</a></li>
             </ul>
 
             <div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </code></pre></div>
 
-            <p>имеет место следующая грамматика: сначала идёт ключевое слово import, потом название модуля или цепочка имён модулей, разделённых точкой, потом ключевое слово as, а за ним — наше название импортируемому модулю.</p>
-            <p>В результате парсинга, например, может быть необходимо прийти к следующему выражению:</p>
+            <p>The following grammar applies here: first comes the import keyword, then the module name or a chain of module names separated by dots, then the as keyword, followed by our name for the imported module.</p>
+            <p>As a result of parsing, for example, we may need to arrive at the following expression:</p>
             <div class="codehilite"><pre><span></span><code>{ &#39;import&#39;: [ &#39;matplotlib&#39;, &#39;pyplot&#39; ], &#39;as&#39;: &#39;plt&#39; }
 </code></pre></div>
 
-            <p>Данное выражение представляет собой словарь Python, который имеет два ключа: 'import' и 'as'. Значением для ключа 'import' является список, в котором по порядку перечислены названия импортируемых модулей.</p>
-            <p>Для парсинга как правило используют регулярные выражения. Для этого имеется модуль Python под названием re (regular expression — регулярное выражение). Если вам не доводилось работать с регулярными выражениями, их вид может вас испугать. Например, для строки кода 'import matplotlib.pyplot as plt' оно будет иметь вид:</p>
+            <p>This expression is a Python dictionary with two keys: 'import' and 'as'. The value for the 'import' key is a list that enumerates the names of the imported modules in order.</p>
+            <p>Regular expressions are usually used for parsing. Python has a module called re (regular expression) for this. If you have never worked with regular expressions, their appearance may scare you. For example, for the code string 'import matplotlib.pyplot as plt' it will look like this:</p>
             <div class="codehilite"><pre><span></span><code><span class="sa">r</span><span class="s1">&#39;^[ \t]*import +\D+\.\D+ +as \D+&#39;</span>
 </code></pre></div>
           </div>

@@ -246,6 +246,16 @@ button {
 #header.header-top .container { display: flex; align-items: center; }
 #header.header-top .navbar { margin: 0; }
 
+/* Keep the fixed language switcher clear of the compact header title.
+   Below 1700px the centered container starts close enough to the left edge
+   that the switcher would overlap the title. */
+@media (max-width: 1700px) {
+  #header.header-top .container { padding-left: 118px; }
+}
+@media (max-width: 576px) {
+  #header.header-top .container { padding-left: 110px; }
+}
+
 @media (max-width: 768px) {
   #header.header-top { height: 60px; }
   #header.header-top h1 { font-size: 26px; }
@@ -782,6 +792,40 @@ section .container {
 }
 .lightbox-close:hover { color: #1e90ff; }
 body.lightbox-open { overflow: hidden; }
+
+/* ---------- Language switcher ---------- */
+.lang-switcher {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 999;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(0, 0, 0, .6);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.lang-switcher a {
+  padding: 5px 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .5px;
+  color: rgba(255, 255, 255, .7);
+  border-radius: 999px;
+  transition: .3s;
+}
+.lang-switcher a:hover { color: #fff; }
+.lang-switcher a.is-active,
+.lang-switcher a.is-active:hover { color: #fff; background: #1e90ff; }
+
+@media (max-width: 576px) {
+  .lang-switcher { top: 12px; left: 12px; }
+}
 
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
